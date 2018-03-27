@@ -20,19 +20,14 @@ var bot = new Discord.Client({
 });
 
 bot.login(auth.token);
-
-console.log("test");
-
 bot.on('ready', function (evt) {
-    console.log('Connected');
-    console.log('Logged in as: ');
-    console.log(bot.username + ' - (' + bot.id + ')');
+    logger.info('Connected');
 });
 
 bot.on('message', function (message) {
     // Our bot needs to know if it needs to execute a command
     // for this script it will listen for messages that will start with `!`
-    console.log(message);
+    logger.log('info', 'message %s', message);
     messagetxt = message.content;
     if (messagetxt.substring(0, 1) == '!') {
         var args = messagetxt.substring(1).split(' ');
